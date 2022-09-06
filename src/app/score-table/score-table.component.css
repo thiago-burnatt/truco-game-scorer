@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(241, 240, 237);
+  font-size: 18px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+form {
+  display: block;
+  width: 100%;
+}
+
+.input-name {
+  max-width: 120px;
+  border: 0;
+  padding-bottom: 20px;
+}
+
+.input-score {
+  margin: 0px 13px 8px 0px;
+}
+
+
+.score-table-main {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  justify-content: center;
+}
+
+.player-score-table {
+  max-width: 120px;
+  margin: 10px;
+  margin: auto;
+}
+
+.winning-table {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.winning-table div {
+  padding: 5px;
+
+}
+.winning-table div p {
+  display: inline;
+  padding: 5px;
+}
+
+.current-score {
+  margin-top: 15px;
+}
+
+.reset-btn {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.reset-btn button {
+  padding: 10px;
+  background-color: white;
+  border: solid 0.5px black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+
+

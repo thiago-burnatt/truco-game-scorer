@@ -1,0 +1,66 @@
+<p>{{ messageInfo }}</p>
+
+<section class="score-table-main">
+  <div class="player-score-table">
+    <input
+    class="input-name"
+    placeholder="Jogador 1"
+    type="text"
+    [(ngModel)]="playerName1">
+    <form>
+      <div
+      class="score-elements"
+      *ngFor="let score of scores; let i = index">
+        <input
+        [checked]="i === 0"
+        class="input-score"
+        (click)="p1Scoring(i)"
+        type="radio"
+        name="score">
+        <label for="{{ score }}">{{ score }}</label><br>
+      </div>
+      <p class="current-score">Pontos: {{ scoringP1 }}</p>
+    </form>
+  </div>
+
+  <div class="player-score-table">
+    <input
+    class="input-name"
+    placeholder="Jogador 2"
+    type="text"
+    [(ngModel)]="playerName2">
+    <form>
+      <div
+      class="score-elements"
+      *ngFor="let score of scores; let i = index">
+        <input
+        [checked]="i === 0"
+        class="input-score"
+        (click)="p2Scoring(i)"
+        type="radio"
+        name="score">
+        <label for="{{ score }}">{{ score }}</label><br>
+      </div>
+      <p class="current-score">Pontos: {{ scoringP2 }}</p>
+    </form>
+  </div>
+</section>
+
+<section class="winning-table">
+  <div>
+    <p>{{ playerName1 }}</p>
+    <p *ngIf="!winningCounter1">0</p>
+    <p *ngIf="winningCounter1">{{ winningCounter1 }}</p>
+  </div>
+  <div>:</div>
+  <div>
+    <p *ngIf="!winningCounter2">0</p>
+    <p *ngIf="winningCounter2">{{ winningCounter2 }}</p>
+    <p>{{ playerName2 }}</p>
+  </div>
+</section>
+<div class="reset-btn">
+  <button (click)="onReset()">Reiniciar</button>
+</div>
+
+

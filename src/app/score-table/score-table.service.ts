@@ -1,6 +1,12 @@
 import { MessageService } from './message.service';
 import { EventEmitter, Injectable } from "@angular/core";
 import { WinningCounterService } from '../winning-counter/winning-counter.service';
+import {
+  calcularPrecoPrazo,
+  consultarCep,
+  rastrearEncomendas,
+} from 'correios-brasil';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class ScoreTableService{
@@ -10,15 +16,45 @@ export class ScoreTableService{
   winCounter2Changed = new EventEmitter<number>();
   msgInfoChanged = new EventEmitter<string>();
 
+
   scoringP1: number;
   scoringP2: number;
   messageInfo: string;
   winningCounter1: number = 0;
   winningCounter2: number = 0;
+  postData =
+  {
+    "SellerCEP": "89218002",
+    "RecipientCEP": "89218000",
+    "ShipmentInvoiceValue": 300,
+    "ShippingServiceCode": null,
+    "ShippingItemArray": [
+      {
+        "Height": 2,
+        "Length": 33,
+        "Quantity": 1,
+        "Weight": 10,
+        "Width": 10,
+        "SKU": "IDW_54626",
+        "Category": "Running"
+      },
+      {
+        "Height": 15,
+        "Length": 15,
+        "Quantity": 1,
+        "Weight": 0.5,
+        "Width": 29
+      }
+    ],
+    "RecipientCountry": "BR"
+  }
+
+
 
   constructor(
     private message: MessageService,
-    private winningCounter: WinningCounterService) {}
+    private winningCounter: WinningCounterService,
+    private http: HttpClient) {}
 
     showScoringP1(id: number) {
       this.scoringP1 = (id);
@@ -27,6 +63,18 @@ export class ScoreTableService{
       }
 
       this.scoreP1Changed.emit(this.scoringP1);
+    }
+
+    postTest() {
+      let headers = new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': '538517D1RBCE4R4B36RBBC0R3C728CDB3611'});
+
+      return this.http.post(
+        'https://api.frenet.com.br/shipping/quote',
+        this.postData, {headers: headers}
+        );
     }
 
     showScoringP2(id: number) {
@@ -44,6 +92,9 @@ export class ScoreTableService{
       this.winCounter1Changed.emit(this.winningCounter1)
       this.winCounter2Changed.emit(this.winningCounter2);
     }
+
+
+
 
   // showScoringP1(id: number, playerName: string) {
   //   this.scoringP1 = (id);

@@ -1,0 +1,7 @@
+{
+  "http://localhost:4200": {
+      "target": "https://api.frenet.com.br/shipping/quote",
+      "secure": false,
+      "logLevel": "debug"
+  }
+}

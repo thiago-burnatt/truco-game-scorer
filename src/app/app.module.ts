@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { MessageService } from './score-table/message.service';
@@ -18,7 +19,8 @@ import { WinningCounterService } from './winning-counter/winning-counter.service
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ScoreTableService, MessageService, WinningCounterService],
   bootstrap: [AppComponent]

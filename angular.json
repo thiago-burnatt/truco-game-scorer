@@ -78,7 +78,8 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "truco_score_table:build"
+            "browserTarget": "truco_score_table:build",
+            "proxyConfig": "src/proxy.conf.json"
           }
         },
         "test": {

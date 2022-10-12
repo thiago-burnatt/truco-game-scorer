@@ -42,4 +42,11 @@ export class ScoreTableComponent implements OnInit {
     this.scoreTable.reset();
   }
 
+  test(){
+    // console.log(this.scoreTable.postTest());
+    this.scoreTable.postTest().subscribe(data => {
+      console.log(data)
+    })
+  }
+
 }
